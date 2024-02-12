@@ -1,8 +1,11 @@
 # Cargar Bibliotecas
+import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import GridSearchCV
 from sklearn.neighbors import KNeighborsRegressor
+import pickle
 
 # Cargar Datos
 train_data_ing = pd.read_csv('../../data/train_ing.csv')
@@ -13,6 +16,8 @@ y = train_data_ing['SalePrice']
 
 # Dividir datos en training y test
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
+X_train = X_train.drop(['SalePrice'], axis=1)
+X_test = X_test.drop(['SalePrice'], axis=1)
 
 # Función para obtener el mejor score
 def get_best_score(grid):
@@ -39,3 +44,5 @@ grid_knn.fit(X_train, y_train)
 sc_knn = get_best_score(grid_knn)
 
 # crear pickle
+pickle.dump(grid_knn, open('../../models/knn.sav', 'wb'))
+pickle.dump(grid_rf, open('../../models/grid_rf.sav', 'wb'))
