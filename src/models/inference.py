@@ -9,10 +9,11 @@ import pickle
 
 # Cargo los datos
 test_data_ing = pd.read_csv('../../data/test_ing.csv')
+train_data_ing = pd.read_csv('../../data/train_ing.csv')
 
 #Cargo el modelo
-loaded_model = pickle.load(open('../../models/knn.sav', 'rb'))
-# predicciones = loaded_model.predict(test_data_ing)
+loaded_model = pickle.load(open('../../models/grid_rf.sav', 'rb'))
+predicciones = pd.DataFrame(loaded_model.predict(test_data_ing.head(1)))
 
 # Guardo predicciones
-# predicciones.to_csv('../../data/predicciones.csv')
+predicciones.to_csv('../../data/predicciones.csv')

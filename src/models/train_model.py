@@ -46,3 +46,4 @@ sc_knn = get_best_score(grid_knn)
 # crear pickle
 pickle.dump(grid_knn, open('../../models/knn.sav', 'wb'))
 pickle.dump(grid_rf, open('../../models/grid_rf.sav', 'wb'))
+
