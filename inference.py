@@ -1,4 +1,5 @@
-'''This script is used to load the model and make predictions on the test data.'''
+'''This script is used to load the model
+and make predictions on the test data.'''
 # Cargar Bibliotecas
 import pandas as pd
 import joblib

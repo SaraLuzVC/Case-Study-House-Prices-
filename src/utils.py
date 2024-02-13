@@ -1,7 +1,8 @@
-'''This script has the functions to clean the data and to select the variables
-of interest. The function limpieza() cleans the data and the function
-ing_variables() selects the variables of interest. The function get_best_score()
-is used to get the best score from a GridSearchCV object.'''
+'''This script has the functions to clean the data and to select
+the variables of interest. The function limpieza() cleans the data
+and the function ing_variables() selects the variables of interest.
+The function get_best_score() is used to get the best score from a
+GridSearchCV object.'''
 # Cargar Bibliotecas
 import pandas as pd
 import numpy as np
@@ -29,10 +30,10 @@ def ing_variables(data_cln):
     '''
     This function selects the variables of interest and transforms them to
     the format that will be used to train the models.
-    
+
     Args:
         data_cln (pd.DataFrame): The cleaned data.
-        
+
     Returns:
         pd.DataFrame: The data with the selected variables.
     '''
@@ -111,10 +112,10 @@ def ing_variables(data_cln):
 def limpieza(datos):
     '''This function cleans the data. It selects the variables of interest and
     transforms them to the format that will be used to train the models.
-    
+
     Args:
         datos (pd.DataFrame): The data.
-    
+
     Returns:
         pd.DataFrame: The cleaned data.'''
     # Eliminar columnas que no se utilizarán
