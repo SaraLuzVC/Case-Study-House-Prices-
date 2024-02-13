@@ -7,8 +7,8 @@ from src.utils import limpieza
 warnings.filterwarnings("ignore")
 
 # Cargar datos
-train_data = pd.read_csv('./data/train_raw.csv')
-test_data = pd.read_csv('./data/test_raw.csv')
+train_data = pd.read_csv('./data/train.csv')
+test_data = pd.read_csv('./data/test.csv')
 
 # Limpieza de datos
 train_data_cln = limpieza(train_data)

@@ -150,5 +150,8 @@ def limpieza(datos):
     data_cln['MiscFeature'] = data_cln['MiscFeature'].fillna('NA')
     # Rellenamos con el promedio
     for i in data_cln.columns:
-        data_cln[i].fillna(data_cln[i].mean(), inplace=True)
+        if data_cln[i].dtype != 'object':
+            data_cln[i].fillna(data_cln[i].mean(), inplace=True)
+        else:
+            data_cln[i].fillna(data_cln[i].mode()[0], inplace=True)
     return data_cln
