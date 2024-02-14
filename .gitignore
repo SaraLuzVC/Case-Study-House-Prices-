@@ -6,4 +6,5 @@ data/test_cln.csv
 data/test_ing.csv
 data/predictions.csv
 
-models/*
+models/knn.sav
+models/rf.sav
