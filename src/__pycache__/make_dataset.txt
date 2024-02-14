@@ -1,0 +1,16 @@
+Para descargar los datos se requiere:
+
+    1. Hacer una cuenta en kaggle (https://www.kaggle.com/)
+    2. Entrar al concurso "House Prices - Advanced Regression Techniques" (https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques)
+    3. Descargar desde la pestaña de "Data"
+
+-------------------------------------------------------------------
+
+Si los datos se encontraran en una dirección de internet, se puede usar la biblioteca de 'requests' para descargarlos.
+
+Ejemplo:
+
+import requests
+URL = "https://instagram.com/favicon.ico"
+response = requests.get(URL)
+open("instagram.ico", "wb").write(response.content)
