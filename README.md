@@ -54,13 +54,21 @@ Como tenemos muy poca información de cómo se va a usar el producto vamos a hac
 ## Estructura del Repositorio
 
 ├── data: Carpeta con los datos de entrada (raw), despues de la limpieza, con ingeniería de variables, y finalmente las predicciones
+
 ├── models: Modelos entrenados (filetype: .sav)
+
 ├── notebooks: EDA y análisis inicial
+
 ├── references: Concurso y notebooks utilizados
+
 ├── reports: Si existe un reporte
+
 ├── requirements: Requisitos en conda
+
 ├── src: Funciones utilizadas
+
 │   └── __pycache__
+
 └── tests: Si llega a haber tests
 
 ## Modelo de datos
