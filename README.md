@@ -64,7 +64,30 @@ Como tenemos muy poca información de cómo se va a usar el producto vamos a hac
 └── tests: Si llega a haber tests
 
 ## Modelo de datos
- 
+ Las variables finales que usa el modelo para predecir son:
+ * 'LotFrontage': metros lineales de fachada o frente.
+ * 'LotArea': metros cuadrados que mide el terreno.
+ * 'Street': Terracería o pavimento.
+ * 'Utilities': puede ser, todos los servicios (Electricidad, Gas, Agua y Drenaje), solo electricidad, gas y agua, solo electricidad y gas, o solo electricidad. 
+ * 'YearBuilt': Año en que se construyó.
+ * 'BedroomAbvGr': Numero de cuartos arriba del nivel del sótano.
+ * 'KitchenQual': Calidad de la cocina, 5 niveles.
+ * 'GarageCars': número de autos que caben en el garage.
+ * 'PavedDrive': Entrada de autos pavimentada. Tres opciones.
+ * 'OverallQual': calidad de materiales y acabados, variable ordinal con 3 niveles.
+ * 'OverallCond': Condición general, variable ordinal con 3 niveles.
+ * 'sotano': tiene o no sótano.
+ * 'banos_completos': número de baños completos (wc, lavabo y regadera).
+ * 'banos_medios': número de medios baños (wc, lavabo)
+ * 'm2construidos': metros cuadrados construídos de la propiedad.
+ * 'm2terraza': m2 si tiene terraza.
+ * En onehot encoding:
+- Ubicación, como si fuera colonia: 'Neighborhood_Blmngtn', 'Neighborhood_Blueste', 'Neighborhood_BrDale', 'Neighborhood_BrkSide', 'Neighborhood_ClearCr', 'Neighborhood_CollgCr', 'Neighborhood_Crawfor', 'Neighborhood_Edwards', 'Neighborhood_Gilbert', 'Neighborhood_IDOTRR', 'Neighborhood_MeadowV', 'Neighborhood_Mitchel', 'Neighborhood_NAmes', 'Neighborhood_NPkVill', 'Neighborhood_NWAmes', 'Neighborhood_NoRidge', 'Neighborhood_NridgHt', 'Neighborhood_OldTown', 'Neighborhood_SWISU', 'Neighborhood_Sawyer', 'Neighborhood_SawyerW', 'Neighborhood_Somerst', 'Neighborhood_StoneBr', 'Neighborhood_Timber', 'Neighborhood_Veenker'
+- Proximidad a vías principales y al ferrocarril: 'Condition1_RRNe', 'Condition_Norm', 'Condition_Feedr', 'Condition_Artery', 'Condition_PosN', 'Condition_PosA','Condition_RRAn', 'Condition_RRAe', 'Condition_RRNn'
+- Tipo de prototipo, duplex, casa, etc.: 'BldgType_1Fam', 'BldgType_2fmCon', 'BldgType_Duplex', 'BldgType_Twnhs', 'BldgType_TwnhsE', 
+- Numero de pisos terminados:'HouseStyle_1.5Fin', 'HouseStyle_1.5Unf', 'HouseStyle_1Story', 'HouseStyle_2.5Fin', 'HouseStyle_2.5Unf', 'HouseStyle_2Story', 'HouseStyle_SFoyer', 'HouseStyle_SLvl'
+- Miselaneo o extra: 'MiscFeature_Gar2', 'MiscFeature_Othr', 'MiscFeature_Shed', 'MiscFeature_TenC'
+- Condiciones de la venta: 'SaleCondition_Abnorml', 'SaleCondition_AdjLand', 'SaleCondition_Alloca', 'SaleCondition_Family', 'SaleCondition_Normal', 'SaleCondition_Partial'
 
 
 ## Tecnología usada
@@ -73,10 +96,4 @@ Como tenemos muy poca información de cómo se va a usar el producto vamos a hac
 
 ## Escenario de Producción
 
-- Assuming that Yelp data can be extracted periodically, this pipeline can be executed in AWS services using a EMR cluster with Spark.
-
-- Data should be stored in the data lake in S3, using the code `S00_stage_data.ipynb`.
-
-- The ETL in `S01_etl.ipynb` already has the code to launch the EMR cluster, and in `config` the configuration files to setup the credentials and variables for the infrastructure will be stored.
-
-- Based on the objective of this analysis, the pipeline could be scheduled to run with Airflow every start of a new month.
+- Los datos crudos se colocan en la carpeta de `data` con el nombre de `test.csv` y `train.csv`
