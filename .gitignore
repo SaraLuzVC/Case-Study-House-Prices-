@@ -5,3 +5,5 @@ data/train_ing.csv
 data/test_cln.csv
 data/test_ing.csv
 data/predictions.csv
+
+models/*
