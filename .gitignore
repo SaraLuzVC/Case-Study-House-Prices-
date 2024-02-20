@@ -1,5 +1,5 @@
-data/test_raw.csv
-data/train_raw.csv
+data/test.csv
+data/train.csv
 data/train_cln.csv
 data/train_ing.csv
 data/test_cln.csv
@@ -8,3 +8,4 @@ data/predictions.csv
 
 models/knn.sav
 models/rf.sav
+models/config.yaml
