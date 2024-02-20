@@ -1,3 +1,0 @@
-2024-02-20 12:37:51,219 - src.utils - INFO - Inference starting ...
-2024-02-20 12:37:51,220 - src.utils - INFO - Cargando datos: <_io.TextIOWrapper name='./data/test_ing.csv' mode='r' encoding='UTF-8'>
-2024-02-20 12:37:51,558 - src.utils - INFO - Guardando datos: <_io.TextIOWrapper name='./data/predictions.csv' mode='w' encoding='UTF-8'>

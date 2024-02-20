@@ -4,7 +4,7 @@ cleaned data, builds new features, and saves the new data in a new file.'''
 import warnings
 import pandas as pd
 import argparse
-from src.utils import ing_variables, get_logger, no_file_error, save_file_error
+from src.utils import ing_variables, get_logger, no_file_error, save_file_error, num_obs, num_vars
 warnings.filterwarnings("ignore")
 
 # Configurar logging
@@ -22,13 +22,23 @@ parser.add_argument('train_outfile', nargs='?', type=argparse.FileType('w'),
 parser.add_argument('test_outfile', nargs='?', type=argparse.FileType('w'),
                     default='./data/test_ing.csv')
 args = parser.parse_args()
-#print(args.train_infile, args.test_infile, args.train_outfile, args.test_outfile)
+logger.debug(f"train_infile: {args.train_infile}")
+logger.debug(f"test_infile: {args.test_infile}")
+logger.debug(f"train_outfile: {args.train_outfile}")
+logger.debug(f"test_outfile: {args.test_outfile}")
 
 # Cargar datos
 logger.info(f"Cargando datos: {args.train_infile}")
-train_data_cln = no_file_error(args.train_infile)
+train_data_cln = no_file_error(args.train_infile, logger)
 logger.info(f"Cargando datos: {args.test_infile}")
-test_data_cln = no_file_error(args.test_infile)
+test_data_cln = no_file_error(args.test_infile, logger)
+
+# Numero de observaciones mayores a 0
+num_obs(train_data_cln, args.train_infile, logger)
+num_obs(test_data_cln, args.test_infile, logger)
+
+# Numero de variables
+num_vars(train_data_cln, test_data_cln, logger)
 
 # Ingeniería de variables
 logger.info("Ingeniería de variables")
@@ -64,8 +74,15 @@ test_data_ing = test_data_ing[columnas]
 # Añadir variable objetivo
 train_data_ing['SalePrice'] = train_data_cln['SalePrice']
 
+# Numero de observaciones mayores a 0
+num_obs(train_data_ing, args.train_outfile, logger)
+num_obs(test_data_ing, args.test_outfile, logger)
+
+# Numero de variables
+num_vars(train_data_ing, test_data_ing, logger)
+
 # Guardar datos
 logger.info(f"Guardando datos: {args.train_outfile}")
-save_file_error(args.train_outfile, train_data_ing)
+save_file_error(args.train_outfile, train_data_ing, logger)
 logger.info(f"Guardando datos: {args.test_outfile}")
-save_file_error(args.test_outfile, test_data_ing)
+save_file_error(args.test_outfile, test_data_ing, logger)

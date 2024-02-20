@@ -3,15 +3,40 @@ the variables of interest. The function limpieza() cleans the data
 and the function ing_variables() selects the variables of interest.
 The function get_best_score() is used to get the best score from a
 GridSearchCV object.'''
+
+#FALTA INDICE DE FUNCIONES
+
 # Cargar Bibliotecas
 import pandas as pd
 import numpy as np
 import logging
 from datetime import datetime
 
+# Numero de variables
+def num_vars(df_train, df_test, logger):
+    if df_train.shape[1] == df_test.shape[1]+1:
+        logger.info(f"Numero de variables en train: {df_train.shape[1]}")
+        logger.info(f"Numero de variables en test: {df_test.shape[1]}")
+        return True
+    else:
+        logger.error(f"Numero de variables en train: {df_train.shape[1]}")
+        logger.error(f"Numero de variables en test: {df_test.shape[1]}")
+        raise ValueError("Numero de variables en train y test no coincide")
+        return False
+
+
+# Numero de observaciones
+def num_obs(data, file, logger):
+    try:
+        1000/data.shape[0]
+        logger.info(f"Numero de observaciones en {file}: {data.shape[0]}")
+        return True
+    except ZeroDivisionError as e:
+        raise ZeroDivisionError(f"Numero de observaciones en {file} es 0")
+        return False
 
 # Función para manejar errores de archivos
-def no_file_error(file):
+def no_file_error(file, logger):
     try:
         data = pd.read_csv(file)
     except FileNotFoundError as e:
@@ -19,11 +44,13 @@ def no_file_error(file):
         raise FileNotFoundError(f"Error: {file} no existe")
     return data
 
-def save_file_error(file,data):
+def save_file_error(file,data, logger):
     try:
         data.to_csv(file, index=False)
+        return True
     except Exception as e:
         logger.error(f"No se pudo guardar el archivo {file}")
+        return False
 
 
 # Función para configurar logging

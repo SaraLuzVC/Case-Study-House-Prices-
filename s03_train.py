@@ -13,7 +13,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.neighbors import KNeighborsRegressor
 import joblib
 import yaml
-from src.utils import get_best_score, get_logger, no_file_error, save_file_error
+from src.utils import get_best_score, get_logger, no_file_error, save_file_error, num_obs
 
 # Configurar logging
 logger = get_logger('train')
@@ -23,21 +23,21 @@ logger.info('Training Models ...')
 parser = argparse.ArgumentParser()
 parser.add_argument('train_infile', nargs='?', type=argparse.FileType('r'),
                     default='./data/train_ing.csv')
-# parser.add_argument('test_infile', nargs='?', type=argparse.FileType('r'),
-#                     default='./data/test_cln.csv')
-parser.add_argument('--test_outfile_rf', #type=argparse.FileType('w'), 
+parser.add_argument('--test_outfile_rf',
                     default='./models/rf.sav')
-parser.add_argument('--test_outfile_knn', #type=argparse.FileType('w'), 
+parser.add_argument('--test_outfile_knn',
                     default='./models/knn.sav')
 args = parser.parse_args()
-print(args.train_infile, args.test_outfile_rf, args.test_outfile_knn)
-
-
-
+logger.debug(f"train_infile: {args.train_infile}")
+logger.debug(f"test_outfile_rf: {args.test_outfile_rf}")
+logger.debug(f"test_outfile_knn: {args.test_outfile_knn}")
 
 # Cargar Datos
 logger.info(f"Cargando datos: {args.train_infile}")
-train_data_ing = no_file_error(args.train_infile)
+train_data_ing = no_file_error(args.train_infile, logger)
+
+# Numero de observaciones mayores a 0
+num_obs(train_data_ing, args.train_infile, logger)
 
 # Abrir yaml
 logger.info("Cargando configuraciones")
