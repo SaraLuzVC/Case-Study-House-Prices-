@@ -4,9 +4,14 @@ cleaned data, builds new features, and saves the new data in a new file.'''
 import warnings
 import pandas as pd
 import argparse
-from src.utils import ing_variables
+from src.utils import ing_variables, get_logger, no_file_error, save_file_error
 warnings.filterwarnings("ignore")
 
+# Configurar logging
+logger = get_logger('built_features')
+logger.info('Built features starting ...')
+
+# Cargar argumentos
 parser = argparse.ArgumentParser()
 parser.add_argument('train_infile', nargs='?', type=argparse.FileType('r'),
                     default='./data/train_cln.csv')
@@ -20,10 +25,13 @@ args = parser.parse_args()
 #print(args.train_infile, args.test_infile, args.train_outfile, args.test_outfile)
 
 # Cargar datos
-train_data_cln = pd.read_csv(args.train_infile)
-test_data_cln = pd.read_csv(args.test_infile)
+logger.info(f"Cargando datos: {args.train_infile}")
+train_data_cln = no_file_error(args.train_infile)
+logger.info(f"Cargando datos: {args.test_infile}")
+test_data_cln = no_file_error(args.test_infile)
 
 # Ingeniería de variables
+logger.info("Ingeniería de variables")
 train_data_ing = ing_variables(train_data_cln)
 test_data_ing = ing_variables(test_data_cln)
 
@@ -57,5 +65,7 @@ test_data_ing = test_data_ing[columnas]
 train_data_ing['SalePrice'] = train_data_cln['SalePrice']
 
 # Guardar datos
-train_data_ing.to_csv(args.train_outfile, index=False)
-test_data_ing.to_csv(args.test_outfile, index=False)
+logger.info(f"Guardando datos: {args.train_outfile}")
+save_file_error(args.train_outfile, train_data_ing)
+logger.info(f"Guardando datos: {args.test_outfile}")
+save_file_error(args.test_outfile, test_data_ing)

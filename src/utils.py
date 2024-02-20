@@ -6,6 +6,45 @@ GridSearchCV object.'''
 # Cargar Bibliotecas
 import pandas as pd
 import numpy as np
+import logging
+from datetime import datetime
+
+
+# Función para manejar errores de archivos
+def no_file_error(file):
+    try:
+        data = pd.read_csv(file)
+    except FileNotFoundError as e:
+        logger.error(f"Error: {file} no existe")
+        raise FileNotFoundError(f"Error: {file} no existe")
+    return data
+
+def save_file_error(file,data):
+    try:
+        data.to_csv(file, index=False)
+    except Exception as e:
+        logger.error(f"No se pudo guardar el archivo {file}")
+
+
+# Función para configurar logging
+def get_logger(archivo_log):
+    now = datetime.now()
+    date_time = now.strftime("%Y%m%d_%H%M%S")
+    log_train_file_name = f"logs/{date_time}_{archivo_log}.log"
+
+    logging.basicConfig(
+        filename=log_train_file_name,
+        level=logging.DEBUG,
+        filemode='w',
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        )
+    
+    logger = logging.getLogger(__name__)
+    handler = logging.FileHandler(log_train_file_name)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    return logger
 
 
 # Función para obtener el mejor score

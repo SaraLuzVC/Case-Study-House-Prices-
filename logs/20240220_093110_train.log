@@ -1,0 +1,6 @@
+2024-02-20 09:31:10,403 - root - INFO - Prep starting ...
+2024-02-20 09:31:10,403 - root - DEBUG - This is a debug message
+2024-02-20 09:31:10,403 - root - INFO - This is an info message
+2024-02-20 09:31:10,403 - root - WARNING - This is a warning message
+2024-02-20 09:31:10,403 - root - ERROR - This is an error message
+2024-02-20 09:31:10,403 - root - CRITICAL - This is a critical message

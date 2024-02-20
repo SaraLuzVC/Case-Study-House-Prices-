@@ -4,6 +4,12 @@ and make predictions on the test data.'''
 import pandas as pd
 import joblib
 import argparse
+from src.utils import get_best_score, get_logger, no_file_error, save_file_error
+
+# Configurar logging
+logger = get_logger('inference')
+logger.info('Inference starting ...')
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument('test_infile', nargs='?', type=argparse.FileType('r'),
@@ -22,12 +28,21 @@ args = parser.parse_args()
 
 
 # Cargo los datos
-test_data_ing = pd.read_csv(args.test_infile)
+logger.info(f"Cargando datos: {args.test_infile}")
+test_data_ing = no_file_error(args.test_infile)
 
 # Cargo el modelo
 # Load the Model
-loaded_model = joblib.load(args.test_model_rf)
-predictions = pd.DataFrame(loaded_model.predict(test_data_ing))
+try:
+    loaded_model = joblib.load(args.test_model_rf)
+except Exception as e:
+    logger.error(f"No se pudo cargar el modelo {args.test_model_rf}")
+
+try:
+    predictions = pd.DataFrame(loaded_model.predict(test_data_ing))
+except Exception as e:
+    logger.error("No se pudo hacer predicciones")    
 
 # Guardo predicciones
-predictions.to_csv(args.test_outfile, index=False)
+logger.info(f"Guardando datos: {args.test_outfile}")
+save_file_error(args.test_outfile, predictions)

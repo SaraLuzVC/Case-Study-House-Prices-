@@ -1,0 +1,9 @@
+2024-02-20 10:02:23,425 - src.utils - INFO - Prep starting ...
+2024-02-20 10:02:23,425 - src.utils - INFO - Prep starting ...
+2024-02-20 10:02:23,426 - src.utils - DEBUG - This is a debug message
+2024-02-20 10:02:23,426 - src.utils - INFO - This is an info message
+2024-02-20 10:02:23,426 - src.utils - WARNING - This is a warning message
+2024-02-20 10:02:23,426 - src.utils - ERROR - This is an error message
+2024-02-20 10:02:23,426 - src.utils - CRITICAL - This is a critical message
+2024-02-20 10:02:23,426 - src.utils - DEBUG - The value of x is 2
+2024-02-20 10:02:23,426 - src.utils - ERROR - Error: division by zero
