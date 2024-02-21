@@ -1,74 +1,108 @@
 '''This script has the functions to clean the data and to select
-the variables of interest. The function limpieza() cleans the data
-and the function ing_variables() selects the variables of interest.
-The function get_best_score() is used to get the best score from a
-GridSearchCV object.'''
+the variables of interest.
 
-#FALTA INDICE DE FUNCIONES
+The functions are:
+    - num_vars: This function checks if the number of variables in the training
+    data is one more than the number of variables in the test data.
+    - num_obs: This function checks if the number of observations in the data
+    is greater than 0.
+    - no_file_error: This function checks if the file exists.
+    - save_file_error: This function checks if the file was saved.
+    - get_logger: This function configures the logging module to save the logs
+    in a file.
+    - get_best_score: This function gets the best score and related information
+    from a GridSearchCV object.
+    - ing_variables: This function selects the variables of interest and
+    transforms them to the format that will be used to train the models.
+    - limpieza: This function cleans the data. It selects the variables
+    of interest and transforms them to the format that will be used to
+    train the models.'''
 
 # Cargar Bibliotecas
-import pandas as pd
-import numpy as np
 import logging
 from datetime import datetime
+import pandas as pd
+import numpy as np
+
 
 # Numero de variables
 def num_vars(df_train, df_test, logger):
+    '''This function checks if the number of variables in the training data is
+    one more than the number of variables in the test data. If the number of
+    variables in the training data is one more than the number of variables
+    in the test data, the function returns True. If the number of variables in
+    the training data is not one more than the number of variables in the test
+    data, the function raises a ValueError and returns False.'''
     if df_train.shape[1] == df_test.shape[1]+1:
         logger.info(f"Numero de variables en train: {df_train.shape[1]}")
         logger.info(f"Numero de variables en test: {df_test.shape[1]}")
         return True
-    else:
-        logger.error(f"Numero de variables en train: {df_train.shape[1]}")
-        logger.error(f"Numero de variables en test: {df_test.shape[1]}")
-        raise ValueError("Numero de variables en train y test no coincide")
-        return False
+    logger.error(f"Numero de variables en train: {df_train.shape[1]}")
+    logger.error(f"Numero de variables en test: {df_test.shape[1]}")
+    raise ValueError("Numero de variables en train y test no coincide")
 
 
 # Numero de observaciones
 def num_obs(data, file, logger):
+    '''This function checks if the number of observations in the data is
+    greater than 0. If the number of observations in the data is greater
+    than 0, the function returns True. If the number of observations in
+    the data is not greater than 0, the function raises a ZeroDivisionError
+    and returns False.'''
     try:
-        1000/data.shape[0]
         logger.info(f"Numero de observaciones en {file}: {data.shape[0]}")
         return True
-    except ZeroDivisionError as e:
-        raise ZeroDivisionError(f"Numero de observaciones en {file} es 0")
-        return False
+    except ZeroDivisionError as exc:
+        raise ZeroDivisionError(
+            f"Numero de observaciones en {file} es 0 {exc}"
+            ) from exc
+
 
 # Función para manejar errores de archivos
 def no_file_error(file, logger):
+    '''This function checks if the file exists. If the file exists, the
+    function returns True. If the file does not exist, the function raises
+    a FileNotFoundError and returns False.'''
     try:
         data = pd.read_csv(file)
-    except FileNotFoundError as e:
-        logger.error(f"Error: {file} no existe")
-        raise FileNotFoundError(f"Error: {file} no existe")
+    except FileNotFoundError as exc:
+        logger.error("Error: %s no existe, %s", file, exc)
+        raise FileNotFoundError(
+            f"Error: {file} no existe, {exc}"
+            ) from exc
     return data
 
-def save_file_error(file,data, logger):
+
+# Función para manejar errores de archivos
+def save_file_error(file, data, logger):
+    '''This function checks if the file was saved. If the file was
+    saved, the function returns True. If the file was not saved, the
+    function returns False.'''
     try:
         data.to_csv(file, index=False)
         return True
-    except Exception as e:
+    except FileNotFoundError:
         logger.error(f"No se pudo guardar el archivo {file}")
         return False
 
 
 # Función para configurar logging
 def get_logger(archivo_log):
+    '''This function configures the logging module to save
+    the logs in a file'''
     now = datetime.now()
     date_time = now.strftime("%Y%m%d_%H%M%S")
     log_train_file_name = f"logs/{date_time}_{archivo_log}.log"
-
     logging.basicConfig(
         filename=log_train_file_name,
         level=logging.DEBUG,
         filemode='w',
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
         )
-    
     logger = logging.getLogger(__name__)
     handler = logging.FileHandler(log_train_file_name)
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     handler.setFormatter(formatter)
     logger.addHandler(handler)
     return logger

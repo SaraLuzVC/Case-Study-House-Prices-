@@ -1,0 +1,22 @@
+2024-02-20 18:58:24,445 - src.utils - INFO - Training Models ...
+2024-02-20 18:58:24,446 - src.utils - DEBUG - train_infile: <_io.TextIOWrapper name='./data/train_ing.csv' mode='r' encoding='UTF-8'>
+2024-02-20 18:58:24,446 - src.utils - DEBUG - test_outfile_rf: ./models/rf.sav
+2024-02-20 18:58:24,446 - src.utils - DEBUG - test_outfile_knn: ./models/knn.sav
+2024-02-20 18:58:24,446 - src.utils - INFO - Cargando datos: <_io.TextIOWrapper name='./data/train_ing.csv' mode='r' encoding='UTF-8'>
+2024-02-20 18:58:24,455 - src.utils - INFO - Numero de observaciones en <_io.TextIOWrapper name='./data/train_ing.csv' mode='r' encoding='UTF-8'>: 1460
+2024-02-20 18:58:24,455 - src.utils - INFO - Cargando configuraciones
+2024-02-20 18:58:24,458 - src.utils - INFO - Dividiendo datos en training y test
+2024-02-20 18:58:24,460 - src.utils - INFO - Random Forest
+2024-02-20 18:58:24,460 - src.utils - DEBUG - min_nodo: 3
+2024-02-20 18:58:24,460 - src.utils - DEBUG - semilla modelo: 5
+2024-02-20 18:58:24,460 - src.utils - DEBUG - número de árboles: 100
+2024-02-20 18:58:26,628 - src.utils - INFO - Vecinos más cercanos
+2024-02-20 18:58:26,628 - src.utils - DEBUG - algoritmo: ball_tree
+2024-02-20 18:58:26,628 - src.utils - DEBUG - número de vecinos: 7
+2024-02-20 18:58:26,628 - src.utils - DEBUG - pesos: distance
+2024-02-20 18:58:26,677 - src.utils - INFO - Random Forest
+2024-02-20 18:58:26,677 - src.utils - INFO - {'min_samples_split': 3, 'n_estimators': 100, 'random_state': 5}
+2024-02-20 18:58:26,677 - src.utils - INFO - RandomForestRegressor(min_samples_split=3, random_state=5)
+2024-02-20 18:58:26,678 - src.utils - INFO - KNN
+2024-02-20 18:58:26,678 - src.utils - INFO - {'algorithm': 'ball_tree', 'n_neighbors': 7, 'weights': 'distance'}
+2024-02-20 18:58:26,678 - src.utils - INFO - KNeighborsRegressor(algorithm='ball_tree', n_neighbors=7, weights='distance')

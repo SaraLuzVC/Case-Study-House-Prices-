@@ -1,0 +1,8 @@
+2024-02-20 18:58:42,055 - src.utils - INFO - Inference starting ...
+2024-02-20 18:58:42,055 - src.utils - DEBUG - test_infile: <_io.TextIOWrapper name='./data/test_ing.csv' mode='r' encoding='UTF-8'>
+2024-02-20 18:58:42,055 - src.utils - DEBUG - test_model_rf: ./models/rf.sav
+2024-02-20 18:58:42,056 - src.utils - DEBUG - test_outfile: <_io.TextIOWrapper name='./data/predictions.csv' mode='w' encoding='UTF-8'>
+2024-02-20 18:58:42,056 - src.utils - INFO - Cargando datos: <_io.TextIOWrapper name='./data/test_ing.csv' mode='r' encoding='UTF-8'>
+2024-02-20 18:58:42,064 - src.utils - INFO - Numero de observaciones en <_io.TextIOWrapper name='./data/test_ing.csv' mode='r' encoding='UTF-8'>: 1459
+2024-02-20 18:58:42,363 - src.utils - INFO - Numero de observaciones en <_io.TextIOWrapper name='./data/predictions.csv' mode='w' encoding='UTF-8'>: 1459
+2024-02-20 18:58:42,363 - src.utils - INFO - Guardando datos: <_io.TextIOWrapper name='./data/predictions.csv' mode='w' encoding='UTF-8'>

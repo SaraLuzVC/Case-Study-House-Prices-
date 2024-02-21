@@ -1,0 +1,15 @@
+2024-02-20 18:57:52,283 - src.utils - INFO - Prep starting ...
+2024-02-20 18:57:52,284 - src.utils - DEBUG - train_infile: <_io.TextIOWrapper name='./data/train.csv' mode='r' encoding='UTF-8'>
+2024-02-20 18:57:52,284 - src.utils - DEBUG - test_infile: <_io.TextIOWrapper name='./data/test.csv' mode='r' encoding='UTF-8'>
+2024-02-20 18:57:52,284 - src.utils - DEBUG - train_outfile: <_io.TextIOWrapper name='./data/train_cln.csv' mode='w' encoding='UTF-8'>
+2024-02-20 18:57:52,284 - src.utils - DEBUG - test_outfile: <_io.TextIOWrapper name='./data/test_cln.csv' mode='w' encoding='UTF-8'>
+2024-02-20 18:57:52,284 - src.utils - INFO - Cargando datos: <_io.TextIOWrapper name='./data/train.csv' mode='r' encoding='UTF-8'>
+2024-02-20 18:57:52,295 - src.utils - INFO - Cargando datos: <_io.TextIOWrapper name='./data/test.csv' mode='r' encoding='UTF-8'>
+2024-02-20 18:57:52,305 - src.utils - INFO - Numero de observaciones en <_io.TextIOWrapper name='./data/train.csv' mode='r' encoding='UTF-8'>: 1460
+2024-02-20 18:57:52,305 - src.utils - INFO - Numero de observaciones en <_io.TextIOWrapper name='./data/test.csv' mode='r' encoding='UTF-8'>: 1459
+2024-02-20 18:57:52,305 - src.utils - INFO - Numero de variables en train: 81
+2024-02-20 18:57:52,305 - src.utils - INFO - Numero de variables en test: 80
+2024-02-20 18:57:52,305 - src.utils - INFO - Limpieza de datos
+2024-02-20 18:57:52,322 - src.utils - INFO - El tipo de cambio es 17.16
+2024-02-20 18:57:52,323 - src.utils - INFO - Guardando datos: <_io.TextIOWrapper name='./data/train_cln.csv' mode='w' encoding='UTF-8'>
+2024-02-20 18:57:52,335 - src.utils - INFO - Guardando datos: <_io.TextIOWrapper name='./data/test_cln.csv' mode='w' encoding='UTF-8'>
