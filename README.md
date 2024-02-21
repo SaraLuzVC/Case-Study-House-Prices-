@@ -54,13 +54,21 @@ Como tenemos muy poca información de cómo se va a usar el producto vamos a hac
 ## Estructura del Repositorio
 
 ├── data: Carpeta con los datos de entrada (raw), despues de la limpieza, con ingeniería de variables, y finalmente las predicciones
+
 ├── models: Modelos entrenados (filetype: .sav)
+
 ├── notebooks: EDA y análisis inicial
+
 ├── references: Concurso y notebooks utilizados
+
 ├── reports: Si existe un reporte
+
 ├── requirements: Requisitos en conda
+
 ├── src: Funciones utilizadas
+
 │   └── __pycache__
+
 └── tests: Si llega a haber tests
 
 ## Modelo de datos
@@ -82,12 +90,12 @@ Como tenemos muy poca información de cómo se va a usar el producto vamos a hac
  * 'm2construidos': metros cuadrados construídos de la propiedad.
  * 'm2terraza': m2 si tiene terraza.
  * En onehot encoding:
-- Ubicación, como si fuera colonia: 'Neighborhood_Blmngtn', 'Neighborhood_Blueste', 'Neighborhood_BrDale', 'Neighborhood_BrkSide', 'Neighborhood_ClearCr', 'Neighborhood_CollgCr', 'Neighborhood_Crawfor', 'Neighborhood_Edwards', 'Neighborhood_Gilbert', 'Neighborhood_IDOTRR', 'Neighborhood_MeadowV', 'Neighborhood_Mitchel', 'Neighborhood_NAmes', 'Neighborhood_NPkVill', 'Neighborhood_NWAmes', 'Neighborhood_NoRidge', 'Neighborhood_NridgHt', 'Neighborhood_OldTown', 'Neighborhood_SWISU', 'Neighborhood_Sawyer', 'Neighborhood_SawyerW', 'Neighborhood_Somerst', 'Neighborhood_StoneBr', 'Neighborhood_Timber', 'Neighborhood_Veenker'
-- Proximidad a vías principales y al ferrocarril: 'Condition1_RRNe', 'Condition_Norm', 'Condition_Feedr', 'Condition_Artery', 'Condition_PosN', 'Condition_PosA','Condition_RRAn', 'Condition_RRAe', 'Condition_RRNn'
-- Tipo de prototipo, duplex, casa, etc.: 'BldgType_1Fam', 'BldgType_2fmCon', 'BldgType_Duplex', 'BldgType_Twnhs', 'BldgType_TwnhsE', 
-- Numero de pisos terminados:'HouseStyle_1.5Fin', 'HouseStyle_1.5Unf', 'HouseStyle_1Story', 'HouseStyle_2.5Fin', 'HouseStyle_2.5Unf', 'HouseStyle_2Story', 'HouseStyle_SFoyer', 'HouseStyle_SLvl'
-- Miselaneo o extra: 'MiscFeature_Gar2', 'MiscFeature_Othr', 'MiscFeature_Shed', 'MiscFeature_TenC'
-- Condiciones de la venta: 'SaleCondition_Abnorml', 'SaleCondition_AdjLand', 'SaleCondition_Alloca', 'SaleCondition_Family', 'SaleCondition_Normal', 'SaleCondition_Partial'
+    - Ubicación, como si fuera colonia: 'Neighborhood_Blmngtn', 'Neighborhood_Blueste', 'Neighborhood_BrDale', 'Neighborhood_BrkSide', 'Neighborhood_ClearCr', 'Neighborhood_CollgCr', 'Neighborhood_Crawfor', 'Neighborhood_Edwards', 'Neighborhood_Gilbert', 'Neighborhood_IDOTRR', 'Neighborhood_MeadowV', 'Neighborhood_Mitchel', 'Neighborhood_NAmes', 'Neighborhood_NPkVill', 'Neighborhood_NWAmes', 'Neighborhood_NoRidge', 'Neighborhood_NridgHt', 'Neighborhood_OldTown', 'Neighborhood_SWISU', 'Neighborhood_Sawyer', 'Neighborhood_SawyerW', 'Neighborhood_Somerst', 'Neighborhood_StoneBr', 'Neighborhood_Timber', 'Neighborhood_Veenker'
+    - Proximidad a vías principales y al ferrocarril: 'Condition1_RRNe', 'Condition_Norm', 'Condition_Feedr', 'Condition_Artery', 'Condition_PosN', 'Condition_PosA','Condition_RRAn', 'Condition_RRAe', 'Condition_RRNn'
+    - Tipo de prototipo, duplex, casa, etc.: 'BldgType_1Fam', 'BldgType_2fmCon', 'BldgType_Duplex', 'BldgType_Twnhs', 'BldgType_TwnhsE', 
+    - Numero de pisos terminados:'HouseStyle_1.5Fin', 'HouseStyle_1.5Unf', 'HouseStyle_1Story', 'HouseStyle_2.5Fin', 'HouseStyle_2.5Unf', 'HouseStyle_2Story', 'HouseStyle_SFoyer', 'HouseStyle_SLvl'
+    - Miselaneo o extra: 'MiscFeature_Gar2', 'MiscFeature_Othr', 'MiscFeature_Shed', 'MiscFeature_TenC'
+    - Condiciones de la venta: 'SaleCondition_Abnorml', 'SaleCondition_AdjLand', 'SaleCondition_Alloca', 'SaleCondition_Family', 'SaleCondition_Normal', 'SaleCondition_Partial'
 
 
 ## Tecnología usada
