@@ -1,6 +1,0 @@
-2024-02-20 12:18:37,857 - src.utils - INFO - Built features starting ...
-2024-02-20 12:18:37,858 - src.utils - INFO - Cargando datos: <_io.TextIOWrapper name='./data/train_cln.csv' mode='r' encoding='UTF-8'>
-2024-02-20 12:18:37,863 - src.utils - INFO - Cargando datos: <_io.TextIOWrapper name='./data/test_cln.csv' mode='r' encoding='UTF-8'>
-2024-02-20 12:18:37,868 - src.utils - INFO - Ingeniería de variables
-2024-02-20 12:18:37,892 - src.utils - INFO - Guardando datos: <_io.TextIOWrapper name='./data/train_ing.csv' mode='w' encoding='UTF-8'>
-2024-02-20 12:18:37,909 - src.utils - INFO - Guardando datos: <_io.TextIOWrapper name='./data/test_ing.csv' mode='w' encoding='UTF-8'>

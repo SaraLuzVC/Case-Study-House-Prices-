@@ -1,0 +1,18 @@
+2024-02-20 18:58:09,997 - src.utils - INFO - Built features starting ...
+2024-02-20 18:58:09,998 - src.utils - DEBUG - train_infile: <_io.TextIOWrapper name='./data/train_cln.csv' mode='r' encoding='UTF-8'>
+2024-02-20 18:58:09,998 - src.utils - DEBUG - test_infile: <_io.TextIOWrapper name='./data/test_cln.csv' mode='r' encoding='UTF-8'>
+2024-02-20 18:58:09,998 - src.utils - DEBUG - train_outfile: <_io.TextIOWrapper name='./data/train_ing.csv' mode='w' encoding='UTF-8'>
+2024-02-20 18:58:09,998 - src.utils - DEBUG - test_outfile: <_io.TextIOWrapper name='./data/test_ing.csv' mode='w' encoding='UTF-8'>
+2024-02-20 18:58:09,998 - src.utils - INFO - Cargando datos: <_io.TextIOWrapper name='./data/train_cln.csv' mode='r' encoding='UTF-8'>
+2024-02-20 18:58:10,004 - src.utils - INFO - Cargando datos: <_io.TextIOWrapper name='./data/test_cln.csv' mode='r' encoding='UTF-8'>
+2024-02-20 18:58:10,008 - src.utils - INFO - Numero de observaciones en <_io.TextIOWrapper name='./data/train_cln.csv' mode='r' encoding='UTF-8'>: 1460
+2024-02-20 18:58:10,009 - src.utils - INFO - Numero de observaciones en <_io.TextIOWrapper name='./data/test_cln.csv' mode='r' encoding='UTF-8'>: 1459
+2024-02-20 18:58:10,009 - src.utils - INFO - Numero de variables en train: 31
+2024-02-20 18:58:10,009 - src.utils - INFO - Numero de variables en test: 30
+2024-02-20 18:58:10,009 - src.utils - INFO - Ingeniería de variables
+2024-02-20 18:58:10,032 - src.utils - INFO - Numero de observaciones en <_io.TextIOWrapper name='./data/train_ing.csv' mode='w' encoding='UTF-8'>: 1460
+2024-02-20 18:58:10,032 - src.utils - INFO - Numero de observaciones en <_io.TextIOWrapper name='./data/test_ing.csv' mode='w' encoding='UTF-8'>: 1459
+2024-02-20 18:58:10,032 - src.utils - INFO - Numero de variables en train: 74
+2024-02-20 18:58:10,032 - src.utils - INFO - Numero de variables en test: 73
+2024-02-20 18:58:10,032 - src.utils - INFO - Guardando datos: <_io.TextIOWrapper name='./data/train_ing.csv' mode='w' encoding='UTF-8'>
+2024-02-20 18:58:10,049 - src.utils - INFO - Guardando datos: <_io.TextIOWrapper name='./data/test_ing.csv' mode='w' encoding='UTF-8'>

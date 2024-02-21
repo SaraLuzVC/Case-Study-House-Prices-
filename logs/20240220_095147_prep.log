@@ -1,9 +1,0 @@
-2024-02-20 09:51:47,479 - __main__ - INFO - Prep starting ...
-2024-02-20 09:51:47,479 - root - INFO - Prep starting ...
-2024-02-20 09:51:47,479 - root - DEBUG - This is a debug message
-2024-02-20 09:51:47,479 - root - INFO - This is an info message
-2024-02-20 09:51:47,479 - root - WARNING - This is a warning message
-2024-02-20 09:51:47,479 - root - ERROR - This is an error message
-2024-02-20 09:51:47,479 - root - CRITICAL - This is a critical message
-2024-02-20 09:51:47,480 - root - DEBUG - The value of x is 2
-2024-02-20 09:51:47,480 - root - ERROR - Error: division by zero

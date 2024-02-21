@@ -5,7 +5,6 @@ best models in a file. We also use the root mean squared error as the scoring
 metric for the grid search. We use the training data to train the models.
 '''
 # Cargar Bibliotecas
-import pandas as pd
 import argparse
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
@@ -13,7 +12,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.neighbors import KNeighborsRegressor
 import joblib
 import yaml
-from src.utils import get_best_score, get_logger, no_file_error, save_file_error
+from src.utils import get_best_score, get_logger, no_file_error, num_obs
 
 # Configurar logging
 logger = get_logger('train')
@@ -23,25 +22,25 @@ logger.info('Training Models ...')
 parser = argparse.ArgumentParser()
 parser.add_argument('train_infile', nargs='?', type=argparse.FileType('r'),
                     default='./data/train_ing.csv')
-# parser.add_argument('test_infile', nargs='?', type=argparse.FileType('r'),
-#                     default='./data/test_cln.csv')
-parser.add_argument('--test_outfile_rf', #type=argparse.FileType('w'), 
+parser.add_argument('--test_outfile_rf',
                     default='./models/rf.sav')
-parser.add_argument('--test_outfile_knn', #type=argparse.FileType('w'), 
+parser.add_argument('--test_outfile_knn',
                     default='./models/knn.sav')
 args = parser.parse_args()
-print(args.train_infile, args.test_outfile_rf, args.test_outfile_knn)
-
-
-
+logger.debug("train_infile: %s", args.train_infile)
+logger.debug("test_outfile_rf: %s", args.test_outfile_rf)
+logger.debug("test_outfile_knn: %s", args.test_outfile_knn)
 
 # Cargar Datos
-logger.info(f"Cargando datos: {args.train_infile}")
-train_data_ing = no_file_error(args.train_infile)
+logger.info("Cargando datos: %s", args.train_infile)
+train_data_ing = no_file_error(args.train_infile, logger)
+
+# Numero de observaciones mayores a 0
+num_obs(train_data_ing, args.train_infile, logger)
 
 # Abrir yaml
 logger.info("Cargando configuraciones")
-with open("./config.yaml", "r") as file:
+with open("./config.yaml", "r", encoding='utf-8') as file:
     config = yaml.safe_load(file)
 
 # Leer configuraciones
@@ -68,14 +67,14 @@ X_test = X_test.drop(['SalePrice'], axis=1)
 # configuraciones
 logger.info('Random Forest')
 m_sample = config['modeling']['random_forest']['model']['min_samples_split']
-logger.debug(f"min_nodo: {m_sample}")
+logger.debug("min_nodo: %s", m_sample)
 semilla_rf = config['modeling']['random_forest']['model']['random_state']
-logger.debug(f"semilla modelo: {semilla_rf}")
+logger.debug("semilla modelo: %s", semilla_rf)
 num_est = config['modeling']['random_forest']['model']['n_estimators']
-logger.debug(f"número de árboles: {num_est}")
+logger.debug("número de árboles: %s", num_est)
 SCORE_CALC = 'neg_mean_squared_error'
 param_grid = {'min_samples_split': [m_sample],
-               'n_estimators': [num_est], 'random_state': [semilla_rf]}
+              'n_estimators': [num_est], 'random_state': [semilla_rf]}
 # modelo
 grid_rf = GridSearchCV(RandomForestRegressor(),
                        param_grid, cv=5,
@@ -88,11 +87,11 @@ sc_rf = get_best_score(grid_rf)
 # configuraciones
 logger.info('Vecinos más cercanos')
 algoritmo = config['modeling']['knn']['model']['algorithm']
-logger.debug(f"algoritmo: {algoritmo}")
+logger.debug("algoritmo: %s", algoritmo)
 num_vec = config['modeling']['knn']['model']['n_neighbors']
-logger.debug(f"número de vecinos: {num_vec}")
+logger.debug("número de vecinos: %s", num_vec)
 pesos = config['modeling']['knn']['model']['weights']
-logger.debug(f"pesos: {pesos}")
+logger.debug("pesos: %s", pesos)
 param_grid = {'n_neighbors': [num_vec],
               'weights': [pesos],
               'algorithm': [algoritmo]}
@@ -114,9 +113,16 @@ logger.info(grid_knn.best_estimator_)
 # exportar modelos
 try:
     joblib.dump(grid_rf, args.test_outfile_rf)
-except Exception as e:
-    logger.error(f"No se pudo guardar el archivo {args.test_outfile_rf}")
+except FileNotFoundError as e:
+    logger.error("El archivo no se encontró: %s, %s", args.test_outfile_rf, e)
+except IOError as e:
+    logger.error("Error de E/S al guardar el archivo %s, %s",
+                 args.test_outfile_rf, e)
+
 try:
-    joblib.dump(grid_rf, args.test_outfile_rf)
-except Exception as e:
-    logger.error(f"No se pudo guardar el archivo {args.test_outfile_rf}")
+    joblib.dump(grid_knn, args.test_outfile_knn)
+except FileNotFoundError as e:
+    logger.error("El archivo no se encontró: %s, %s", args.test_outfile_knn, e)
+except IOError as e:
+    logger.error("Error de E/S al guardar el archivo %s, %s",
+                 args.test_outfile_knn, e)

@@ -105,3 +105,16 @@ Como tenemos muy poca información de cómo se va a usar el producto vamos a hac
 ## Escenario de Producción
 
 - Los datos crudos se colocan en la carpeta de `data` con el nombre de `test.csv` y `train.csv`
+
+## Testing
+❯ pytest
+==================================================================================== test session starts ====================================================================================
+platform linux -- Python 3.11.7, pytest-7.4.0, pluggy-1.0.0
+rootdir: /home/saraluz/Documents/2Sem/ArqProd/Tarea3_ArqProd
+plugins: anyio-4.2.0
+collected 6 items                                                                                                                                                                           
+
+tests/test_utils.py ......                                                                                                                                                            [100%]
+
+===================================================================================== 6 passed in 0.25s =====================================================================================
+❯ 
