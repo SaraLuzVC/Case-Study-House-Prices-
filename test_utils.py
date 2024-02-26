@@ -91,12 +91,12 @@ def test_cols_entrada_test():
 
 def test_train_path_file():
     '''This function tests if the train.csv file exists.'''
-    assert exists('../data/train.csv') is True
+    assert exists('./data/train.csv') is True
 
 
 def test_test_path_file():
     '''This function tests if the test.csv file exists.'''
-    assert exists('../data/test.csv') is True
+    assert exists('./data/test.csv') is True
 
 
 # test no_file_error
