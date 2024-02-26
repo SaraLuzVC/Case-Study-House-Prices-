@@ -53,23 +53,46 @@ Como tenemos muy poca información de cómo se va a usar el producto vamos a hac
 
 ## Estructura del Repositorio
 
-├── data: Carpeta con los datos de entrada (raw), despues de la limpieza, con ingeniería de variables, y finalmente las predicciones
-
-├── models: Modelos entrenados (filetype: .sav)
-
-├── notebooks: EDA y análisis inicial
-
-├── references: Concurso y notebooks utilizados
-
-├── reports: Si existe un reporte
-
-├── requirements: Requisitos en conda
-
-├── src: Funciones utilizadas
-
-│   └── __pycache__
-
-└── tests: Si llega a haber tests
+.<br/>
+├── config.yaml<br/>
+├── data<br/>
+│   ├── predictions.csv<br/>
+│   ├── test_cln.csv<br/>
+│   ├── test.csv<br/>
+│   ├── test_ing.csv<br/>
+│   ├── train_cln.csv<br/>
+│   ├── train.csv<br/>
+│   └── train_ing.csv<br/>
+├── logs<br/>
+│   ├── 20240220_185752_prep.log<br/>
+│   ├── 20240220_185809_built_features.log<br/>
+│   ├── 20240220_185824_train.log<br/>
+│   └── 20240220_185842_inference.log<br/>
+├── models<br/>
+│   ├── knn.sav<br/>
+│   └── rf.sav<br/>
+├── notebooks<br/>
+│   └── 01_tarea_SaraLuz_ValenzuelaCamacho.ipynb<br/>
+├── README.md<br/>
+├── references<br/>
+│   └── referencias<br/>
+├── reports<br/>
+├── requirements<br/>
+│   └── conda_requirements.txt<br/>
+├── s01_prep.py<br/>
+├── s02_built_features.py<br/>
+├── s03_train.py<br/>
+├── s04_inference.py<br/>
+├── src<br/>
+│   ├── __pycache__<br/>
+│   │   ├── __init__.cpython-311.pyc<br/>
+│   │   ├── make_dataset.txt<br/>
+│   │   └── utils.cpython-311.pyc<br/>
+│   └── utils.py<br/>
+└── tests
+    ├── __pycache__<br/>
+    │   └── test_utils.cpython-311-pytest-7.4.0.pyc<br/>
+    └── test_utils.py<br/>
 
 ## Modelo de datos
  Las variables finales que usa el modelo para predecir son:
@@ -100,7 +123,16 @@ Como tenemos muy poca información de cómo se va a usar el producto vamos a hac
 
 ## Tecnología usada
 
-- `Python`: 
+- jupyter == 1.0.0
+- jupyterlab == 4.0.8
+- matplotlib == 3.8.0
+- notebook == 7.0.6
+- numpy == 1.26.3
+- pandas == 2.1.4
+- python == 3.11.7
+- scikit-learn == 1.2.2
+- scipy == 1.11.4
+- seaborn == 0.12.2
 
 ## Escenario de Producción
 

@@ -9,4 +9,3 @@ data/predictions.csv
 models/knn.sav
 models/rf.sav
 models/config.yaml
-*.csv

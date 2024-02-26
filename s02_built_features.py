@@ -22,15 +22,11 @@ parser.add_argument('train_outfile', nargs='?', type=argparse.FileType('w'),
 parser.add_argument('test_outfile', nargs='?', type=argparse.FileType('w'),
                     default='./data/test_ing.csv')
 args = parser.parse_args()
-logger.debug("train_infile: %s", args.train_infile)
-logger.debug("test_infile: %s", args.test_infile)
-logger.debug("train_outfile: %s", args.train_outfile)
-logger.debug("test_outfile: %s", args.test_outfile)
 
 # Cargar datos
-logger.info("Cargando datos: %s", args.train_infile)
+logger.info("Cargando datos limpios: %s", args.train_infile)
 train_data_cln = no_file_error(args.train_infile, logger)
-logger.info("Cargando datos: %s", args.test_infile)
+logger.info("Cargando datos limpios: %s", args.test_infile)
 test_data_cln = no_file_error(args.test_infile, logger)
 
 # Numero de observaciones mayores a 0
