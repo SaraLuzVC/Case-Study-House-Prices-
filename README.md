@@ -53,7 +53,7 @@ Como tenemos muy poca información de cómo se va a usar el producto vamos a hac
 
 ## Estructura del Repositorio
 
-.
+.<br/>
 ├── config.yaml<br/>
 ├── data<br/>
 │   ├── predictions.csv<br/>
